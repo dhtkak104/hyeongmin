@@ -1,5 +1,6 @@
 package com.mvc2.service.Impl;
 
+import java.util.List;
 import java.util.Map;
 
 import com.mvc2.mapper.Mapper;
@@ -16,8 +17,16 @@ public class TestServiceImpl implements TestService{
 	
 	@Override
 	public Map<String, Object> test(Map<String, Object> param) {
+		Map<String, Object> result = mapper.selectbbs(param);
+		return result;
+	}
+
+	@Override
+	public List<Map<String, Object>> test2(Map<String, Object> param) {
+		
+		List<Map<String, Object>> result = mapper.selectbbsList(param);
 		// TODO Auto-generated method stub
-		return null;
+		return result;
 	}
 	
 	
