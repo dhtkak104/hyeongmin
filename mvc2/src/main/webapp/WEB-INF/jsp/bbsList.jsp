@@ -23,6 +23,12 @@
 		<h2 class="hidden">bbs-list-area</h2>
 		<div class="container">
 			<h3>게시판</h3>
+			<div class="search">
+				<form action="bbs">
+					<input type="text" name="keyword" placeholder="검색어를 입력해주세요." value="${keyword}">
+					<input type="submit" value="검색">
+				</form>
+			</div>
 			<table>
 				<caption>제목, 작성자, 게시일</caption>
 				<colgroup>
@@ -49,42 +55,42 @@
 			</table>
 			<%-- 
 			<div class="page">
-				<c:if test="${resultData.startPage!=1}">
+				<c:if test="${bbs.startPage!=1}">
 					<a href="bbs?currentPage=1
-						<c:if test="${resultData.keyword!=null}">						
-							&keyword=${resultData.keyword}							
+						<c:if test="${bbs.keyword!=null}">						
+							&keyword=${bbs.keyword}							
 						</c:if>
 					">[처음]</a>
-					<a href="bbs?currentPage=${resultData.startPage-1}&keyword=${resultData.keyword}">[이전]</a>
+					<a href="bbs?currentPage=${bbs.startPage-1}&keyword=${bbs.keyword}">[이전]</a>
 				</c:if> 
-				<c:forEach var="pageNo" begin="${resultData.startPage}" end="${resultData.endPage < resultData.pageTotalCnt ? resultData.endPage : resultData.pageTotalCnt}">
+				<c:forEach var="pageNo" begin="${bbs.startPage}" end="${bbs.endPage < bbs.pageTotalCnt ? bbs.endPage : bbs.pageTotalCnt}">
 					<c:choose>
-						<c:when test="${pageNo == resultData.currentPage}">
-							<b class="currentPage">${resultData.pageNo}</b>
+						<c:when test="${pageNo == bbs.currentPage}">
+							<b class="currentPage">${pageNo}</b>
 						</c:when>
 						<c:otherwise>
-							<a class="remainPage" href="bbs?currentPage=${resultData.pageNo}
-								<c:if test="${resultData.keyword!=null}">						
-									&keyword=${resultData.keyword}							
+							<a class="remainPage" href="bbs?currentPage=${pageNo}
+								<c:if test="${bbs.keyword!=null}">						
+									&keyword=${bbs.keyword}							
 								</c:if>
-							">${resultData.pageNo}</a>
+							">${pageNo}</a>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach> 
-				<c:if test="${resultData.endPage < resultData.pageTotalCnt}">
-					<a href="bbs?currentPage=${resultData.endPage+1}
-						<c:if test = "${resultData.keyword!=null}">						
-							&keyword=${resultData.keyword}							
+				<c:if test="${bbs.endPage < bbs.pageTotalCnt}">
+					<a href="bbs?currentPage=${bbs.endPage+1}
+						<c:if test="${bbs.keyword!=null}">						
+							&keyword=${bbs.keyword}							
 						</c:if>
 					">[다음]</a>
-					<a href="bbs?currentPage=${resultData.pageTotalCnt}
-						<c:if test = "${resultData.keyword!=null}">						
-							&keyword=${resultData.kewword}							
+					<a href="bbs?currentPage=${bbs.pageTotalCnt}
+						<c:if test = "${bbs.keyword!=null}">						
+							&keyword=${bbs.kewword}							
 						</c:if>
 					">[마지막]</a>
 				</c:if>
-			</div>		 
-			--%>	
+			</div> 
+			--%>		 
 		</div>
 	</section>
 </body>
