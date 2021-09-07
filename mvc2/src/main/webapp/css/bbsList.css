@@ -3,9 +3,16 @@
 .bbs-area{width:100%; text-align: center; margin-top:61px;}
 span{font-weight: 400;font: bold;}
 h3{padding:60px; width:100%; font-size:48px; color:#444;}
-.search{width:100%; text-align: right; margin-bottom:10px;}
-.search input[type=text]{width:20%; padding:10px 11px; border: 1px solid #ddd; }
-.search input[type=submit]{width:60px; padding:10px 0; border: 1px solid #ccc; background-color:#f8f9fa; text-align:center;}
+
+.option{width:100%; margin-bottom:10px; position:relative;}
+.option .add_btn{
+	position:absolute; top:0px; left:0px; border:1px solid #ff2d60; 
+	display:inline-block; color:#ff2d60; width:100px; padding:10px 0; 
+	text-align:center; font-size:15px;
+}
+.option form{width:100%; text-align:right;}
+.option input[type=text]{width:20%; padding:10px 11px; border: 1px solid #ddd; }
+.option input[type=submit]{width:60px; padding:10px 0; border: 1px solid #ccc; background-color:#f8f9fa; text-align:center;}
 
 table{
 	width:100%;  background-color:#fff; border-top:1px solid #ccc; 

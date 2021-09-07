@@ -23,7 +23,8 @@
 		<h2 class="hidden">bbs-list-area</h2>
 		<div class="container">
 			<h3>게시판</h3>
-			<div class="search">
+			<div class="option">
+				<a class="add_btn" href="/bbs/insert">추가</a>
 				<form action="bbs">
 					<input type="text" name="keyword" placeholder="검색어를 입력해주세요." value="${keyword}">
 					<input type="submit" value="검색">
@@ -89,7 +90,7 @@
 						</c:if>
 					">[마지막]</a>
 				</c:if>
-			</div> 
+			</div>		
 			--%>		 
 		</div>
 	</section>
