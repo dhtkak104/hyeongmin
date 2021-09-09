@@ -1,11 +1,11 @@
 $(function() {
 	
-	$("#saveForm").submit(function(e){	 
-		e.preventDefault();
+	$("#loginForm").submit(function(e){	 
+		e.preventDefault();		
 		var data = $(this).serializeObject();
-		
+
 		$.ajax({
-			url: '/bbs',
+			url: '/login',
 			type: 'POST',
 			data: JSON.stringify(data),
 			dataType: 'json',
@@ -14,19 +14,18 @@ $(function() {
 				var code = xhr.status;
 				if(200 <= code && code < 300) 
 				{
-					if(data) {
+					if(data){
 						$(location).attr('href', '/bbs');
 					} else {
-						alert("등록실패");
-					} 
+						alert("로그인 실패");
+					}
 				}
 				else {
-					alert("등록실패");
+					alert("로그인 실패");
 				}
 			}
 		});
 		return false;
 	});
-	
 	
 });

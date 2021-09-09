@@ -36,7 +36,7 @@
 			<div class="view_bottom clearfix">
 				<a class="list_btn" href="/bbs">목록</a>
 				<a href="/bbs/${bbs.bbsNo}/update">수정</a>
-				<a>삭제</a>
+				<a onclick="bbsDelete(${bbs.bbsNo})">삭제</a>
 			</div>			
 		</div>
 	</section>

@@ -19,6 +19,7 @@
 <link href="${path}/css/bbsList.css" rel="stylesheet" type="text/css">  
 </head>
 <body>
+	<jsp:include page="header.jsp"/>
 	<section class="bbs-area">
 		<h2 class="hidden">bbs-list-area</h2>
 		<div class="container">
