@@ -28,15 +28,28 @@
 				<ul class="clearfix">
 					<li>${bbs.userId}</li>
 					<li>${bbs.insertTs}</li>
+					<li>${bbs.views}</li>
 				</ul>
 			</div>
 			<div class="view_cont">
 				${bbs.bbsContents}
 			</div>
 			<div class="view_bottom clearfix">
-				<a class="list_btn" href="/bbs">목록</a>
-				<a href="/bbs/${bbs.bbsNo}/update">수정</a>
-				<a onclick="bbsDelete(${bbs.bbsNo})">삭제</a>
+				<c:if test="${not empty bbs.recent}">
+					<div class="other_bbs recent">
+						<a href="/bbs/${bbs.recent.bbsNo}?isView=T">${bbs.recent.bbsTitle}<span>${bbs.recent.insertTs}</span></a>
+					</div>
+				</c:if>
+				<c:if test="${not empty bbs.past}">
+					<div class="other_bbs past">
+						<a href="/bbs/${bbs.past.bbsNo}?isView=T">${bbs.past.bbsTitle}<span>${bbs.past.insertTs}</span></a>
+					</div>
+				</c:if>
+				<div class="btn_list">
+					<a class="list_btn" href="/bbs">목록</a>
+					<a href="/bbs/${bbs.bbsNo}/update">수정</a>
+					<a onclick="bbsDelete(${bbs.bbsNo})">삭제</a>
+				</div>
 			</div>			
 		</div>
 	</section>
