@@ -13,6 +13,7 @@
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
 <script src="${path}/js/common/convertUtil.js" type="text/javascript"></script>
+<script src="${path}/js/common/validationUtil.js" type="text/javascript"></script>
 <script src="${path}/js/bbsUpdate.js" type="text/javascript"></script>
 <link href='https://cdn.rawgit.com/openhiun/hangul/14c0f6faa2941116bb53001d6a7dcd5e82300c3f/nanumbarungothic.css' rel='stylesheet' type='text/css'>
 <link href="${path}/css/reset.css" rel="stylesheet" type="text/css">
@@ -28,10 +29,22 @@
 				<div class="view_head">
 					<input type="hidden" id="bbsNo" name="bbsNo" value="${bbs.bbsNo}">
 					<input type="text" name="bbsTitle" value="${bbs.bbsTitle}" placeholder="제목을 입력해주세요." maxlength="100">
-					<input type="hidden" name="userId" value="${bbs.userId}">
 				</div>
 				<div class="view_cont">
 					<textarea rows="15" cols="165" name="bbsContents" placeholder="내용을 입력해주세요.(2000자 이내)">${bbs.bbsContents}</textarea>
+					<div class="attachfile_area">
+					<p><span>첨부파일</span></p>
+						<input type="hidden" id="fileNo" value="${bbs.fileNo}">
+						<div class="og_file_area">
+							<img src="/img/file.png">
+							<a>${bbs.fileName}.${bbs.fileType}<span class="delete_btn" onClick="deleteOgFile(${bbs.fileNo})">x</span></a>
+						</div>
+						<div class="new_file_area">
+							<input type="file" id="file">
+							<button type="button" id="uploadBtn">업로드</button>
+							<div id="newFileChange"></div>	
+						</div>
+					</div>
 				</div>
 				<div class="view_bottom clearfix">
 					<input type="submit" value="저장">

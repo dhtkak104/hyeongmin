@@ -22,7 +22,10 @@ form{
 .attachfile_area{width:100%; margin-top: 15px; background-color:#f9f9f9; padding:20px 22px; text-align: left;}
 .attachfile_area p{text-align: left; margint-right:15px; font-weight: 350;}
 .attachfile_area p span{font-weight: 400; margin-right:15px;}
-#fileBtn{display:none;}
+.attachfile_area #file{display:none;}
+.attachfile_area img{width:17px; vertical-align:middle;}
+.attachfile_area a{line-height: 25px; padding-left: 2px; cursor: pointer;}
+.attachfile_area a .delete_btn{color:#ff2d60; font-weight: 400; padding-left: 10px;}
 
 .view_bottom{width:100%;}
 .view_bottom input{

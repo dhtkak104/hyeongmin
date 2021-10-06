@@ -32,8 +32,17 @@
 				</ul>
 			</div>
 			<div class="view_cont">
-				${bbs.bbsContents}
+				<div class="bbsContents">
+					${bbs.bbsContents}
+				</div>
+				<c:if test="${not empty bbs.fileNo}">
+					<div class="attachfile_area">
+						<img src="/img/file.png">
+						<a href="/bbs/${bbs.bbsNo}/files/${bbs.fileNo}?fileNo=${bbs.fileNo}">${bbs.fileName}.${bbs.fileType}</a>
+					</div>
+				</c:if>				
 			</div>
+			
 			<div class="view_bottom clearfix">
 				<c:if test="${not empty bbs.recent}">
 					<div class="other_bbs recent">

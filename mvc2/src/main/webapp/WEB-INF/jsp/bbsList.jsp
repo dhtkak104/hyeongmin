@@ -34,7 +34,7 @@
 			<div class="option">
 				<a class="add_btn" href="/bbs/insert">추가</a>
 				<form action="bbs" method="get">
-					<input type="text" name="keyword" placeholder="검색어를 입력해주세요." value="${keyword}">
+					<input type="text" name="keyword" placeholder="검색어를 입력해주세요." value="${bbs.keyword}">
 					<input type="submit" value="검색">
 				</form>
 			</div>
@@ -42,22 +42,32 @@
 				<caption>제목, 작성자, 게시일</caption>
 				<colgroup>
 					<col style="width:*%">
-					<col style="width:20%">
-					<col style="width:20%">
+					<col style="width:10%">
+					<col style="width:15%">
+					<col style="width:50px">
 				</colgroup>
 				<thead>
 					<tr>
 						<th>제목</th>
 						<th>작성자</th>
 						<th>게시일</th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${bbsList}" var="item">
+					<c:forEach items="${bbs.bbsList}" var="item">
 						<tr onClick="selectBbsDetail(${item.bbsNo})">
-							<td>${item.bbsTitle}</td>
-							<td>${item.userId}</td>
+							<td class="leftAlign">${item.bbsTitle}</td>
+							<td class="leftAlign">${item.userId}</td>
 							<td>${item.insertTs}</td>
+							<c:choose>
+								<c:when test="${item.fileNo!=null}">
+									<td class="attchFielTd"><img src="/img/file.png"></td>
+								</c:when>
+								<c:otherwise>
+									<td></td>
+								</c:otherwise>
+							</c:choose>
 						</tr>		
 					</c:forEach>								
 				</tbody>

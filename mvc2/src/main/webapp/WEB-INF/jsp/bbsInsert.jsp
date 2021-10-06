@@ -27,10 +27,15 @@
 			<form id="saveForm">
 				<div class="view_head">
 					<input type="text" name="bbsTitle" placeholder="제목을 입력해주세요." maxlength="100">
-					<input type="hidden" name="userId" value="dhtkak104">
 				</div>
 				<div class="view_cont">
 					<textarea rows="15" cols="165" name="bbsContents" placeholder="내용을 입력해주세요.(2000자 이내)"></textarea>
+					<div class="attachfile_area">
+						<p><span>첨부파일</span></p>
+						<input type="file" id="file">
+						<button type="button" id="uploadBtn">업로드</button>
+						<div id="newFileChange"></div>
+					</div>
 				</div>
 				<div class="view_bottom clearfix">
 					<input type="submit" value="저장">
