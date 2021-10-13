@@ -1,4 +1,3 @@
-// 파일 업로드 https://tyrannocoding.tistory.com/54
 var deleteFileNo = null;
 var fileList = [];
 var fileIdx = 0;
