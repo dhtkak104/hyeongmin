@@ -7,14 +7,14 @@
 	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
 
-	<!-- @Transactional 선언용 --> 
+	<!-- @Transactional 선언하여 사용밥법: 사용시 반드시 Service throw Exception 선언할 것 --> 
 	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" lazy-init="true">
    		<property name="dataSource" ref="dataSource" />
    	</bean>
    	<tx:annotation-driven transaction-manager="txManager" /> 
    	
    	<!-- 
-	   	메소드 지정해서 사용 
+	   	메소드 지정하여 사용방법: 선언용과 달리 Service throw Exception 필요없음
 	   	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" p:dataSource-ref="dataSource" /> 
 	   	<tx:advice id="txAdvice" transaction-manager="txManager"> 
 	   		<tx:attributes>  
