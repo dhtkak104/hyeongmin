@@ -27,5 +27,4 @@
 		<property name="basePackage" value="mapper" />
 		<property name="sqlSessionTemplateBeanName" value="sqlSessionTemplate"/>
 	</bean> 
-	
 </beans>     

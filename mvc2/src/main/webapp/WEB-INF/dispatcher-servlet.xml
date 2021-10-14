@@ -7,8 +7,23 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 		
-	<!-- 특정 패키지 내의 클래스를 스캔하고 Annotation(@Component @Controller @Service @Repository)을 확인한 후 Bean 인스턴스로 생성한다. -->
-	<context:component-scan base-package="com.mvc2"/>
+	<!--
+		context:component-scan 
+		- 정의 : 특정 패키지 내의 클래스를 스캔하고 Annotation(@Component @Controller @Service @Repository)을 확인한 후 Bean 인스턴스로 생성한다.
+		- 사용법
+		  1. Default Annotation Scan 
+		     : <context:component-scan base-package="패키지 경로"/>
+		 	   예시) <context:component-scan base-package="com.mvc2"/>
+		  2. 필요한 Annotation Scan 
+		     : use-default-filters - Default Annotation 스캔여부 결정 (default true)
+		       context:include-filter - 포함할 Annotation 설정
+		       context:exclude-filter - 제외할 Annotation 설정        
+		       예시) 현재 설정해놓은 context:component-scan 설정 참고 
+	-->
+	<context:component-scan base-package="com.mvc2" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+	
 	<mvc:annotation-driven/>
 	
 	<!-- dispatcherServlet Jsp ViewResolver -->
