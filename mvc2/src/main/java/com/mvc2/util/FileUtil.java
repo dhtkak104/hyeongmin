@@ -23,7 +23,7 @@ public class FileUtil {
 		if(!folder.exists()) //폴더 존재여부 확인 (존재: true)  
 		{
 			try {
-				folder.mkdir(); //폴더 생성 
+				folder.mkdirs(); //폴더 생성 : mkdirs - 모든 경로 폴더생성 / mkdir - 마지막 경로 폴더만 생성 
 		    }
 			catch(Exception e) {
 			    e.getStackTrace();
