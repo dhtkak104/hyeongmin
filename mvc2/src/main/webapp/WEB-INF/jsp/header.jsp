@@ -23,7 +23,7 @@
 		</h1>
 		<ul class="nav-list">
 			<li><a href="/bbs">게시판</a></li>
-			<li><a href="/bbs">게시판</a></li>
+			<li><a href="/schools">학교정보</a></li>
 			<li><a href="/bbs">게시판</a></li>
 			<li><a href="/bbs">게시판</a></li>
 			<c:choose>		
@@ -31,6 +31,16 @@
 				    <ul class="headerDrop">
 				    	<li class="headerLI">
 				        	<a><span>${sessionScope.loginUser.userName}</span>님</a>
+				        	<div class="profile">
+				        		<c:choose>	
+					        		<c:when test="${not empty sessionScope.loginUser.profilePath}">
+					        			<img class="profile" src="${sessionScope.loginUser.profilePath}">
+					        		</c:when>
+					        		<c:otherwise>
+										<img class="profile" src="/img/defaultProfile.jpg">
+					        		</c:otherwise>
+				        		</c:choose>	
+				    		</div>
 				        	<br><br>
 				        	<ul class="headerDown">	
 								<li onClick="logout()">로그아웃</li>
