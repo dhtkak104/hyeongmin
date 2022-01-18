@@ -13,6 +13,17 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FilenameUtils;
+import org.apache.poi.hssf.util.HSSFColor.HSSFColorPredefined;
+import org.apache.poi.ss.usermodel.BorderStyle;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.FillPatternType;
+import org.apache.poi.ss.usermodel.HorizontalAlignment;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.streaming.SXSSFSheet;
+import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -104,4 +115,70 @@ public class FileUtil {
 		}
 	}
 	
+	public static SXSSFWorkbook makeExcel(String sheetName, Map<String, Object> header, List<Map<String, Object>> body) {
+		SXSSFWorkbook wb = new SXSSFWorkbook();
+		Sheet sheet = wb.createSheet(sheetName);
+		Row row = null;
+		Cell cell = null;
+		int rowNo = 0;
+		
+		//Header 스타일 생성
+		CellStyle headStyle = setHaederStyle(wb);
+		row = sheet.createRow(rowNo++);
+		int i = 0;
+		for(String key : header.keySet()) {
+		    cell = row.createCell(i);
+		    cell.setCellStyle(headStyle);
+			cell.setCellValue(StringUtil.fixNull(header.get(key)));
+			i++;
+		}
+		
+		//Body 스타일 생성
+		CellStyle bodyStyle = setBodyStyle(wb);
+		for(Map<String, Object> record : body) {
+			row = sheet.createRow(rowNo++);
+			i = 0;
+			for(String key : header.keySet()) {
+				cell = row.createCell(i);
+				cell.setCellStyle(bodyStyle);
+				cell.setCellValue(StringUtil.fixNull(record.get(key)));
+				i++;
+			}
+		}
+		
+		((SXSSFSheet) sheet).trackAllColumnsForAutoSizing();
+		for(int j=0 ; j<header.size() ; j++) {
+			sheet.autoSizeColumn(j); // 셀너비 자동
+			j++;
+		}
+		
+		return wb;
+	}
+	
+	private static CellStyle setHaederStyle(Workbook wb) {
+		//Header 스타일
+		CellStyle headStyle = wb.createCellStyle();
+		//경계선 설정
+		headStyle.setBorderTop(BorderStyle.THIN);
+		headStyle.setBorderBottom(BorderStyle.THIN);
+		headStyle.setBorderLeft(BorderStyle.THIN);
+		headStyle.setBorderRight(BorderStyle.THIN);
+		//배경 && 가운데 정렬 설정
+		headStyle.setFillForegroundColor(HSSFColorPredefined.YELLOW.getIndex());
+		headStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+		headStyle.setAlignment(HorizontalAlignment.CENTER);
+		
+		return headStyle;
+	}
+
+	private static CellStyle setBodyStyle(Workbook wb) {
+		//Body 스타일
+		CellStyle bodyStyle = wb.createCellStyle();
+		bodyStyle.setBorderTop(BorderStyle.THIN);
+		bodyStyle.setBorderBottom(BorderStyle.THIN);
+		bodyStyle.setBorderLeft(BorderStyle.THIN);
+		bodyStyle.setBorderRight(BorderStyle.THIN);
+
+		return bodyStyle;
+	}
 }
